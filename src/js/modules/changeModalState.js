@@ -12,6 +12,7 @@ const changeModalState = (state) => {
     checkNumInputs ('#height');
 
     function bindActionToElems (action, elem, prop) {
+
         elem.forEach((item, i) => {
             item.addEventListener(action, () => {
                 switch(item.nodeName) {
@@ -34,10 +35,12 @@ const changeModalState = (state) => {
                         break;
                     
                 }
-                // console.log(state);
             });
         });
     }
+
+
+    
 
     bindActionToElems('click', windowForm, 'form');
     bindActionToElems('input',windowWidth, 'width');

@@ -57,13 +57,16 @@ const forms = (state) => {
                 .finally(() => {
                     cleareInputs();
                     setTimeout(() => {
-                        statusMessage.remove();
+                        statusMessage.remove();                
+                        document.querySelectorAll('[data-modal]').forEach(item => {
+                            item.style.display = 'none';
+                        });
+                        document.body.classList.remove('modal-open');
                     }, 5000); 
                 });
         });
-    });
-    
 
+    });
     
 };
 
