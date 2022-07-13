@@ -1,4 +1,4 @@
-const modals = () => {
+export const modals = () => {
 
     function bindModal(triggerSelector, modalSelector, closeSelector, closeClickOverlay = true) {
         const trigger = document.querySelectorAll(triggerSelector),
@@ -19,13 +19,11 @@ const modals = () => {
             });
         });
 
-
         modal.addEventListener('click', (e) => {
             if (e.target == modal && closeClickOverlay) {
                 closeModal();
             }
         });
-
     }
 
     function showModalByTime(selector, time) {
@@ -34,21 +32,6 @@ const modals = () => {
             document.body.classList.add('modal-open');
         }, time);
     }
-
-    function closeModal() {
-        const windows = document.querySelectorAll('[data-modal]');
-        windows.forEach(item => {
-            item.style.display = 'none';
-        });
-        document.body.classList.remove('modal-open');
-    }
-
-    function openModal(selector) {
-        closeModal();
-        selector.style.display = 'block';
-        document.body.classList.add('modal-open');
-    }
-
 
     bindModal('.popup_engineer_btn', '.popup_engineer', '.popup_engineer .popup_close');
     bindModal('.phone_link', '.popup', '.popup .popup_close');
@@ -59,4 +42,17 @@ const modals = () => {
 };
 
 
-export default modals;
+
+export function openModal(selector) {
+    closeModal();
+    selector.style.display = 'block';
+    document.body.classList.add('modal-open');
+}
+
+export function closeModal() {
+    const windows = document.querySelectorAll('[data-modal]');
+    windows.forEach(item => {
+        item.style.display = 'none';
+    });
+    document.body.classList.remove('modal-open');
+}

@@ -1,4 +1,5 @@
 import checkNumInputs from './checkNumInputs';
+import { closeModal } from './modals';
 
 const forms = (state) => {
     const form = document.querySelectorAll('.form'),
@@ -58,10 +59,7 @@ const forms = (state) => {
                     cleareInputs();
                     setTimeout(() => {
                         statusMessage.remove();                
-                        document.querySelectorAll('[data-modal]').forEach(item => {
-                            item.style.display = 'none';
-                        });
-                        document.body.classList.remove('modal-open');
+                        closeModal();
                     }, 5000); 
                 });
         });
